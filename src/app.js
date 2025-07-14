@@ -77,7 +77,7 @@ export function app() {
   // Global variables
   let currentDate = new Date();
   let selectedDate = null;
-  const startDate = new Date("2025-07-15");
+  const startDate = new Date(2025, 6, 15); // July is month 6 (0-indexed)
   const today = new Date();
 
   // Month names in Uzbek
@@ -144,7 +144,7 @@ export function app() {
       const dayOfWeek = dayDate.getDay();
 
       // Add classes for styling
-      if (dayOfWeek === 0 || dayOfWeek === 6) {
+      if (dayOfWeek === 0) {
         dayElement.classList.add("weekend");
       }
 

@@ -1,0 +1,16 @@
+{
+  "name": "Oylik Dars Rejasi",
+  "short_name": "DarsReja",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "description": "Oylik dars rejasi - PWA ilova",
+  "icons": [
+    {
+      "src": "/images/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

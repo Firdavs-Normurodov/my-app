@@ -3,116 +3,134 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Oylik Dars Rejasi</title>
+
+        <!-- PWA Meta Tags -->
         <meta name="theme-color" content="#667eea" />
         <meta name="description" content="Oylik dars rejasi - PWA ilova" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Dars Rejasi" />
+        <link rel="apple-touch-icon" href="/images/icon.svg" />
 
-        <link
-            rel="manifest"
-            href="data:application/manifest+json,{%22name%22:%22Oylik%20Dars%20Rejasi%22,%22short_name%22:%22DarsReja%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22display_override%22:[%22window-controls-overlay%22,%22standalone%22],%22description%22:%22Oylik%20dars%20rejasi%20-%20PWA%20ilova%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%22%23667eea%22,%22icons%22:[{%22src%22:%22data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cdefs%3E%3ClinearGradient%20id='grad'%20x1='0%25'%20y1='0%25'%20x2='100%25'%20y2='100%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23667eea'/%3E%3Cstop%20offset='100%25'%20stop-color='%23764ba2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='100'%20height='100'%20fill='url(%23grad)'/%3E%3Ctext%20x='50'%20y='35'%20font-family='Arial'%20font-size='24'%20fill='white'%20text-anchor='middle'%20font-weight='bold'%3E📚%3C/text%3E%3Ctext%20x='50'%20y='65'%20font-family='Arial'%20font-size='20'%20fill='white'%20text-anchor='middle'%20font-weight='bold'%3EDR%3C/text%3E%3C/svg%3E%22,%22sizes%22:%22192x192%22,%22type%22:%22image/svg+xml%22},{%22src%22:%22data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cdefs%3E%3ClinearGradient%20id='grad'%20x1='0%25'%20y1='0%25'%20x2='100%25'%20y2='100%25'%3E%3Cstop%20offset='0%25'%20stop-color='%23667eea'/%3E%3Cstop%20offset='100%25'%20stop-color='%23764ba2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='100'%20height='100'%20fill='url(%23grad)'/%3E%3Ctext%20x='50'%20y='35'%20font-family='Arial'%20font-size='24'%20fill='white'%20text-anchor='middle'%20font-weight='bold'%3E📚%3C/text%3E%3Ctext%20x='50'%20y='65'%20font-family='Arial'%20font-size='20'%20fill='white'%20text-anchor='middle'%20font-weight='bold'%3EDR%3C/text%3E%3C/svg%3E%22,%22sizes%22:%22512x512%22,%22type%22:%22image/svg+xml%22}]}"
-        />
 
-        <link
-            rel="apple-touch-icon"
-            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23667eea'/%3E%3Cstop offset='100%25' stop-color='%23764ba2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23grad)'/%3E%3Ctext x='50' y='35' font-family='Arial' font-size='24' fill='white' text-anchor='middle' font-weight='bold'%3E📚%3C/text%3E%3Ctext x='50' y='65' font-family='Arial' font-size='20' fill='white' text-anchor='middle' font-weight='bold'%3EDR%3C/text%3E%3C/svg%3E"
-        />
-
-        <title>Oylik Dars Rejasi</title>
         <link
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
             rel="stylesheet"
         />
     </head>
     <body>
-        <!-- Install Banner -->
-        <div class="install-banner" id="installBanner">
-            <i class="fas fa-download"></i>
-            Bu ilovani telefoningizga o'rnating!
-            <button class="install-btn" id="installBtn">
-                <i class="fas fa-plus"></i> O'rnatish
-            </button>
-            <button class="install-btn" id="dismissBtn">
-                <i class="fas fa-times"></i>
-            </button>
+        <!-- Login Container -->
+        <div id="loginContainer" class="login-container">
+            <div class="login-box">
+                <h2>Kirish</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="username">Login</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Parol</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Kirish</button>
+                    <p id="loginError" class="error-message"></p>
+                </form>
+            </div>
         </div>
 
-        <div class="app-container">
-            <!-- Header -->
-            <div class="header fade-in">
-                <h1><i class="fas fa-graduation-cap"></i> Oylik Dars Rejasi</h1>
-                <p>Tartibli o'rganish - muvaffaqiyatning kaliti</p>
+        <!-- Main App Content (Initially Hidden) -->
+        <div id="mainContent" style="display: none;">
+            <!-- Install Banner -->
+            <div class="install-banner" id="installBanner">
+                <i class="fas fa-download"></i>
+                Bu ilovani telefoningizga o'rnating!
+                <button class="install-btn" id="installBtn">
+                    <i class="fas fa-plus"></i> O'rnatish
+                </button>
+                <button class="install-btn" id="dismissBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
 
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-number" id="currentDay">1</div>
-                        <div class="stat-label">Bugungi kun</div>
+            <div class="app-container">
+                <!-- Header -->
+                <div class="header fade-in">
+                    <h1><i class="fas fa-graduation-cap"></i> Oylik Dars Rejasi</h1>
+                    <p>Tartibli o'rganish - muvaffaqiyatning kaliti</p>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="currentDay">1</div>
+                            <div class="stat-label">Bugungi kun</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="completedDays">0</div>
+                            <div class="stat-label">Bajarilgan</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalDays">30</div>
+                            <div class="stat-label">Jami kunlar</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="progressPercent">0%</div>
+                            <div class="stat-label">Progress</div>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="completedDays">0</div>
-                        <div class="stat-label">Bajarilgan</div>
+                </div>
+
+                <!-- Calendar -->
+                <div class="calendar-container fade-in">
+                    <div class="calendar-header">
+                        <h2 class="calendar-title" id="calendarTitle">Iyul 2025</h2>
+                        <div class="calendar-nav">
+                            <button class="nav-btn" id="prevMonth">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="nav-btn" id="nextMonth">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="totalDays">30</div>
-                        <div class="stat-label">Jami kunlar</div>
+
+                    <div class="weekdays">
+                        <div class="weekday">Ya</div>
+                        <div class="weekday">Du</div>
+                        <div class="weekday">Se</div>
+                        <div class="weekday">Ch</div>
+                        <div class="weekday">Pa</div>
+                        <div class="weekday">Ju</div>
+                        <div class="weekday">Sh</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="progressPercent">0%</div>
-                        <div class="stat-label">Progress</div>
+
+                    <div class="calendar-grid" id="calendarGrid">
+                        <!-- Calendar days will be generated here -->
                     </div>
                 </div>
             </div>
 
-            <!-- Calendar -->
-            <div class="calendar-container fade-in">
-                <div class="calendar-header">
-                    <h2 class="calendar-title" id="calendarTitle">Iyul 2025</h2>
-                    <div class="calendar-nav">
-                        <button class="nav-btn" id="prevMonth">
-                            <i class="fas fa-chevron-left"></i>
+            <!-- Schedule Modal -->
+            <div class="schedule-modal" id="scheduleModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="modalTitle">Kun rejasi</h3>
+                        <button class="close-btn" id="closeModal">
+                            <i class="fas fa-times"></i>
                         </button>
-                        <button class="nav-btn" id="nextMonth">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
+                    </div>
+                    <div id="scheduleContent">
+                        <!-- Schedule items will be generated here -->
                     </div>
                 </div>
-
-                <div class="weekdays">
-                    <div class="weekday">Ya</div>
-                    <div class="weekday">Du</div>
-                    <div class="weekday">Se</div>
-                    <div class="weekday">Ch</div>
-                    <div class="weekday">Pa</div>
-                    <div class="weekday">Ju</div>
-                    <div class="weekday">Sh</div>
-                </div>
-
-                <div class="calendar-grid" id="calendarGrid">
-                    <!-- Calendar days will be generated here -->
-                </div>
             </div>
-        </div>
 
-        <!-- Schedule Modal -->
-        <div class="schedule-modal" id="scheduleModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="modalTitle">Kun rejasi</h3>
-                    <button class="close-btn" id="closeModal">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div id="scheduleContent">
-                    <!-- Schedule items will be generated here -->
-                </div>
-            </div>
+            <!-- Floating Action Button -->
+            <button class="fab" id="todayBtn" title="Bugungi kun">
+                <i class="fas fa-calendar-day"></i>
+            </button>
         </div>
-
-        <!-- Floating Action Button -->
-        <button class="fab" id="todayBtn" title="Bugungi kun">
-            <i class="fas fa-calendar-day"></i>
-        </button>
 
         <script type="module" src="./src/main.js"></script>
     </body>
